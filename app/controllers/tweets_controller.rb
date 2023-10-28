@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  # 優先的にメソッドの実行　exceptには実行しない　それ以外に実行
+  # 優先的にメソッドの実行　exceptには実行しない　それ以外へ実行
   # ログインしてなかったら利用できないと言うメソッド
   before_action :move_to_index, except:[:index,:show,:search]
 
