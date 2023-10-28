@@ -1,0 +1,8 @@
+<div class="contents row">
+  <div class="container">
+    <h3>編集する</h3>
+    <%# editコントローラーからは中身が入ったレコードのインスタンス変数が送られてきてるのでupdateに送られる %>
+    <%# 部分テンプレートに遷移 %>
+    <%= render partial:"form",locals:{tweet:@tweet}%>
+  </div>
+</div>

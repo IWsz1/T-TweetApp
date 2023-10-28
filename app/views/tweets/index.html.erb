@@ -1,0 +1,15 @@
+<div class="contents row">
+  <%# 検索フォーム %>
+  <%# urlで %>
+  <%# 検索結果画面を表示するuriのpathとhttpメソッドを記述 %>
+  <%= form_with(url: search_tweets_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%# keywordキーに入力内容を入れてフォーム送信を行う %>
+    <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+    <%= form.submit "検索", class: "search-btn" %>
+  <% end %>
+  <% @tweets.each do |tweet| %>
+    <%# partialでtweet部分テンプレートを呼び出し %>
+    <%# localsで部分テンプレートにtweetという変数にtweetを代入して継承 %>
+    <%= render partial:"tweet",locals:{tweet:tweet}%>
+  <% end %>
+</div>

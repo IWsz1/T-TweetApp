@@ -1,0 +1,8 @@
+<div class="contents row">
+  <div class="container">
+    <h3>投稿する</h3>
+    <%# newコントローラーからは空レコードのインスタンス変数が送られてきてるのでcreateに送られる %>
+    <%# 部分テンプレートに遷移 %>
+    <%= render partial:"form",locals:{tweet: @tweet}%>
+  </div>
+</div>

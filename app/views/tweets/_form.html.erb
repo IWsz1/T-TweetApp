@@ -1,0 +1,8 @@
+<%# tweetは部分テンプレートから変数で送られてきた、Tweetテーブルの新規で作成された空のレコード %>
+<%# modelには新規で作成された入力されたデータを格納するレコードと新規入力するレコードに格納したいidを持ったアソシエーションされた他テーブルのレコードを入力する %>
+<%= form_with(model: tweet, local: true) do |form| %>
+<%# カラム名とフォームの参考を記入 %>
+  <%= form.text_field :image, placeholder: "Image Url" %>
+  <%= form.text_area :text, placeholder: "text", rows: "10" %>
+  <%= form.submit "SEND" %>
+<%end%>

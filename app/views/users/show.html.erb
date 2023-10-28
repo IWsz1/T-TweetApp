@@ -1,0 +1,9 @@
+<div class="contents row">
+  <p><%= @nickname %>さんの投稿一覧</p>
+  
+  <% @tweets.each do |tweet| %>
+    <%# partialでtweetsフォルダのtweet部分テンプレートを呼び出し %>
+    <%# localsで部分テンプレートにtweetという変数にtweetを代入して継承 %>
+    <%= render partial:"tweets/tweet",locals:{tweet:tweet}%>
+  <% end %>
+</div>
