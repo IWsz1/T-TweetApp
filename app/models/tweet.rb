@@ -12,7 +12,7 @@ class Tweet < ApplicationRecord
     if search != ""
       # whereで条件に一致するものを検索
       # LIKEで部分一致検索を可能にしている
-      # %は何かしらの文字列　_は何かしらの一文字を表す
+      # %は何かしらの文字列_は何かしらの一文字を表す
       Tweet.where('text LIKE(?)', "%#{search}%")
     else
       Tweet.all
