@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
     # oraderでcreted_at(作成日時)が降順の並び順で変数に代入される
     @tweets = Tweet.includes(:user).order("created_at DESC")
   end
-  # 新規投稿ページです。
+  # 新規投稿ページ
   def new
     @tweet = Tweet.new
   end
