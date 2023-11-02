@@ -1,31 +1,31 @@
 <div class="content_post" style="background-image: url(<%= tweet.image %>);">
-      <div class="more">
-        <%# image_tagでimgタグをRubyで使用　"arrow_top.png"でapp/assets/images配下の画像ファイルまたはpublic配下の画像ファイルを指定　publickは以下の場合はファイル名の前に/記載 %>
-        <span><%= image_tag 'arrow_top.png' %></span>
-        <ul class="more_list">
-          <%# ログインされててかつログインユーザー＝ツイート作成者だったら %>
-          <% if user_signed_in? && tweet.user_id == current_user.id %>
-            <li>
-              <%# link_toで削除ボタンを作成　tweets/レコード.カラム名でidをパラメーターとして設置することで削除したいレコードをdestroyアクションに送る dataからはHTTPをdeleteにする記載%>
-              <%= link_to '削除', "/tweets/#{tweet.id}", data: { turbo_method: :delete } %>
-            </li>
-            <li>
-              <%# パス(uri pattern)を変数化(prefix(各パスごとのprefixはターミナルでrails routasで検索可能))してパラメータを引数として渡すことで削除したいレコードをdestroyアクションに送る %>
-              <%= link_to '編集', edit_tweet_path(tweet.id) %>
-            </li>
-          <% end %>
-          <li>
-            <%= link_to '詳細', tweet_path(tweet.id) %>
-          </li>
-        </ul>
-      </div>
-      <p><%= tweet.text %></p>
-      <span class="name">      
-        <%# ツイートレコードのユーザーidを持った人の個別ページへ %>
-        <a href=users/<%=tweet.user_id%>>
-          <span>投稿者</span>
-          <%# ツイートレコードのユーザーidを持った人のニックネーム表示 %>
-          <%=tweet.user.nickname%>
-        </a>
-      </span>
-    </div>
+  <div class="more">
+    <%# image_tagでimgタグをRubyで使用　"arrow_top.png"でapp/assets/images配下の画像ファイルまたはpublic配下の画像ファイルを指定　publickは以下の場合はファイル名の前に/記載 %>
+    <span><%= image_tag 'arrow_top.png' %></span>
+    <ul class="more_list">
+      <%# ログインされててかつログインユーザー＝ツイート作成者だったら %>
+      <% if user_signed_in? && tweet.user_id == current_user.id %>
+        <li>
+          <%# link_toで削除ボタンを作成　tweets/レコード.カラム名でidをパラメーターとして設置することで削除したいレコードをdestroyアクションに送る dataからはHTTPをdeleteにする記載%>
+          <%= link_to '削除', "/tweets/#{tweet.id}", data: { turbo_method: :delete } %>
+        </li>
+        <li>
+          <%# パス(uri pattern)を変数化(prefix(各パスごとのprefixはターミナルでrails routasで検索可能))してパラメータを引数として渡すことで削除したいレコードをdestroyアクションに送る %>
+          <%= link_to '編集', edit_tweet_path(tweet.id) %>
+        </li>
+      <% end %>
+      <li>
+        <%= link_to '詳細', tweet_path(tweet.id) %>
+      </li>
+    </ul>
+  </div>
+  <p><%= tweet.text %></p>
+  <span class="name">      
+    <%# ツイートレコードのユーザーidを持った人の個別ページへ %>
+    <a href=users/<%=tweet.user_id%>>
+      <span>投稿者</span>
+      <%# ツイートレコードのユーザーidを持った人のニックネーム表示 %>
+      <%=tweet.user.nickname%>
+    </a>
+  </span>
+</div>

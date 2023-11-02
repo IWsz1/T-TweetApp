@@ -18,8 +18,13 @@ class TweetsController < ApplicationController
   # 新規投稿のレスポンス対応でデータ追加
   def create
     # tweet_paramsで追加データをparamsの中から限定
-    Tweet.create(tweet_params)
-    redirect_to "/tweets"
+    @tweet = Tweet.create(tweet_params)
+    if @tweet.valid? #valid?によって、@tweetが正しく保存されるものなのかどうかを判断している。保存されるようであれば保存しルートパスへ。保存できないものであれば、新規投稿ページに戻っている
+      @tweet.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
   # 削除のレスポンス対応
   def destroy
@@ -38,7 +43,11 @@ class TweetsController < ApplicationController
   def update
     tweet = Tweet.find(params[:id])
     tweet.update(tweet_params)
-    redirect_to "/tweets"
+    if tweet.valid? #valid?によって、@tweetが正しく保存されるものなのかどうかを判断している。保存されるようであれば保存しルートパスへ。保存できないものであれば、新規投稿ページに戻っている
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
   # 詳細ページ
   def show
